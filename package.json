@@ -1,0 +1,16 @@
+{
+  "name": "cakemitten.bot",
+  "version": "1.0.0",
+  "description": "a bunch of good things",
+  "main": {
+    "main": "bot.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jherz",
+  "license": "MIT",
+  "dependencies": {
+    "twit": "^2.2.5"
+  }
+}

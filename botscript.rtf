@@ -1,0 +1,93 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;\csgray\c100000;}
+\margl1440\margr1440\vieww12600\viewh12680\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 Reclaiming sense of self :: how to spot bots, how to make them
+\b0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 More advanced bots can use visuals and audio.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Chat Bots are computer programs designed to simulate exchanging messages with a human.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 They are used in social media and customer service.\
+They match messages from real humans with combinations of keywords and other responses stored in their database. \
+\
+Twitter Bots are computer programs designed to post tweets like a human.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+They often: \
+	mention services or products	\
+	give sales pitches\
+	spam links\
+	ask for personal financial information\
+	take .1 second to type a detailed response\
+	are available at all hours\
+	repeat answers\
+	use weird syntax - two spaces vs one\
+	apologize for speaking bad [insert your language here]\
+What are the reasons for these behaviors?\
+\
+We can break all of this down by making one for ourselves. This one will be on twitter, using node and a couple other things.\
+
+\b 	Set up node + js app environment
+\b0 \
+		mkdir tomb-r-ic\
+		npm init - package.json \'93main\'94 : \{ \'93main\'94 : \'93bot.js\'94 \}\
+		2 files:\
+			* bot.js (main app file)\
+			* config.js\
+
+\b 	Set up twitter stuff
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 		Set up a distinct user for your bot.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 		{\field{\*\fldinst{HYPERLINK "https://apps.twitter.com/app/new"}}{\fldrslt create a new application}}, leave callback url blank\
+		now the secret ingredients - stuff uniquely generated for user\
+		copy: consumer key/secret\
+		generate token actions. copy these too: access token/secret \
+	
+\b Back to your js files\
+		
+\b0 paste these into your config.js as object module.exports = \{\
+			consumer_key: \'91\'92,\
+			consumer_secret: \'91\'92,\
+			access_token: \'91\'92,\
+			access_token_secret: \'91\'92	\
+		\}\
+		npm install \'97save twit. twit allows you to fav and retweet stuff. (more on how it works)\
+		go to bot.js and link it to twit and (config.js) the other js file:\
+			var twit = require('twit');\
+			var config = require('./config.js'); \
+		make a new instance of twit function, have it access the secret stuff\
+	
+\b Retweet stuff - make a cake bot that retweets cake-related tweets\
+		
+\b0 initialize a params object that will hold various properties to search a tweet, but most importantly a query or q property that will refine our searches.\
+Whatever value you feed in this property, our bot will search the tweets to retweet based on this criteria. You can feed these property values like a specific word, twitter handler or a hashtag.
+\b \
+	Fave stuff too,,,\
+
+\b0 		define and initialize another function expression that will search and favorite a tweet randomly.\
+		creating a parameter object params that will consist of three properties as in the retweet() function expression. The bot will search for tweets using the same .get() function provided by the twit API to GET any of the Twitter API endpoints.\
+In our case, we need search/tweets. We will store the status of the tweet to favorite in a variable. We will apply the random function by passing the \'93status of the search\'94 variable as an argument in another variable\
+	
+\b Start the bot with node\
+		
+\b0 node bot.js\
+		or install nodemon, or deploy the app to Heroku.\
+		\
+	Give the user something to Tweet. (This goes in a Google spreadsheet.)\
+\
+\
+	Tell the Google servers to automatically tweet your data on a schedule. \
+	\
+\
+\
+\
+}
